@@ -1,0 +1,32 @@
+# Виртуальное окружение
+.venv/
+venv/
+env/
+ENV/
+
+# База данных
+*.sqlite3
+*.db
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Django
+*.log
+local_settings.py
+media/
+
+# VS Code
+.vscode/
+.idea/
+
+# macOS
+.DS_Store
+
+# Файлы с секретами
+.env
+*.env
