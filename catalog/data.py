@@ -28,14 +28,14 @@ courses_data = [
 authors_data = [
     {
         'id': 1,
-        'name': 'Иван Петров',
+        'name': 'Гуртов Максим',
         'bio': 'Опытный Python разработчик с 5-летним стажем',
-        'email': 'ivan@example.com',
+        'email': 'maks.gurtov.00@mail.ru',
     },
     {
         'id': 2,
-        'name': 'Мария Сидорова',
+        'name': 'Седых Алексей',
         'bio': 'Frontend разработчик, преподаватель JavaScript',
-        'email': 'maria@example.com',
+        'email': 'alexey@mail.ru',
     },
 ]
