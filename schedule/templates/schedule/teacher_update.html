@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обновить информацию о преподавателе</title>
+</head>
+<body>
+    <h1>Обновить информацию о преподавателе</h1>
+    <form method="post">
+        {% csrf_token %}
+
+        <label>
+            Имя:
+            <input type="text" name="first_name" value="{{ teacher.first_name }}" required>
+        </label>
+        <br><br>
+
+        <label>
+            Фамилия:
+            <input type="text" name="last_name" value="{{ teacher.last_name }}" required>
+        </label>
+        <br><br>
+            
+        <label>
+            Email:
+            <input type="email" name="email" value="{{ teacher.email }}" required>
+        </label>
+        <br><br>
+
+        <button type="submit">Обновить</button>
+        <br><br>
+    </form>
+    
+    <form method="post" action="{% url 'delete' teacher.id %}">
+        {% csrf_token %}
+        <button type="submit">Удалить</button>
+    </form>
+</body>
+</html>

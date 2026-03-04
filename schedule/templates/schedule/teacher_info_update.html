@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обновить информацию преподавателя</title>
+</head>
+<body>
+    <h1>Обновить информацию о преподавателе</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label>
+            Телефон:
+            <input type="text" name="phone" value="{{ teacher_info.phone }}">
+        </label>
+        <br><br>
+
+        <label>
+            Стаж:
+            <input type="number" name="experience_years" value="{{ teacher_info.experience_years }}">
+        </label>
+        <br><br>
+
+        <label>
+            Биография:
+            <textarea name="bio">{{ teacher_info.bio }}</textarea>
+        </label>
+        <br><br>
+        
+        <button type="submit">Обновить</button>
+    </form>
+</body>
+</html>

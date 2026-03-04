@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Информация о преподавателе</title>
+</head>
+<body>
+    <h1>Информация о преподавателе</h1>
+
+    {% if teacher_info %}
+        <p><strong>Телефон:</strong> {{ teacher_info.phone|default:"-" }}</p>
+        <p><strong>Стаж:</strong> {{ teacher_info.experience_years }} лет</p>
+        <p><strong>Биография:</strong> {{ teacher_info.bio|default:"-" }}</p>
+        <a href="{% url 'teacher_info_update' teacher.id %}">Редактировать информацию</a>
+    {% else %}
+        <p>Информация о преподавателе пока отсутствует.</p>
+        <a href="{% url 'teacher_info_update' teacher.id %}">Создать информацию</a>
+    {% endif %}
+</body>
+</html>

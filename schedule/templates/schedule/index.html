@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список преподавателей</title>
+</head>
+<body>
+    <h1>Преподаватели</h1>
+    <ul>
+        {% for teacher in teachers %}
+            <li>{{ teacher.first_name }} {{ teacher.last_name }} - {{ teacher.email }}
+                <a href="{% url 'teacher_info' teacher.id %}">Подробная информация</a>
+            </li>
+        {% empty %}
+            <li>Преподаватели не найдены</li>
+        {% endfor %}
+
+    </ul>
+</body>
+</html>
