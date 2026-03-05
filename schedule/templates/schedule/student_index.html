@@ -6,6 +6,13 @@
     <title>Document</title>
 </head>
 <body>
+    <nav>
+        <a href="{% url 'schedule_index' %}">Преподаватели</a> |
+        <a href="{% url 'courses' %}">Курсы</a> |
+        <a href="{% url 'student_index' %}">Студенты</a> |
+    </nav>
+    <hr>
+
     <h1>Студенты</h1>
     <ul>
     {% for student in students %}
@@ -13,6 +20,9 @@
             {{ student.first_name }} {{ student.last_name }} ({{ student.email }})
             <a href="{% url 'student_update' student.id %}">Редактировать</a>
             <a href="{% url 'student_delete' student.id %}">Удалить</a>
+            <br>
+            <a href="{% url 'student_courses' student.id %}">Курсы</a>
+            <a href="{% url 'student_enroll' student.id %}">Записать на курс</a>
         </li>
     {% empty %}
         <li>Студенты не найдены</li>

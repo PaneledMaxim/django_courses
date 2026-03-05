@@ -6,19 +6,20 @@
 <body>
     <h1>{{ course.title }}</h1>
     <nav>
-        <a href="/">Главная</a> |
-        <a href="/courses/">Курсы</a> |
-        <a href="/authors/">Авторы</a> |
-        <a href="/info/">О проекте</a>
+        <a href="{% url 'app_selector' %}">Выбор приложения</a> |
+        <a href="{% url 'catalog_index' %}">Главная каталога</a> |
+        <a href="{% url 'coursess' %}">Курсы</a> |
+        <a href="{% url 'authors' %}">Авторы</a> |
+        <a href="{% url 'info' %}">О проекте</a>
     </nav>
     
     <p><strong>Описание:</strong> {{ course.description }}</p>
     <p><strong>Длительность:</strong> {{ course.duration }}</p>
     <p><strong>Цена:</strong> {{ course.price }} руб.</p>
     <p><strong>Автор:</strong> 
-        <a href="/author/{{ course.author_id }}/">{{ author.name }}</a>
+        <a href="{% url 'authors_details' course.author_id %}">{{ author.name }}</a>
     </p>
     
-    <a href="/courses/">← Назад к списку курсов</a>
+    <a href="{% url 'coursess' %}">← Назад к списку курсов</a>
 </body>
 </html>

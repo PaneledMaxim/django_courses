@@ -5,8 +5,11 @@ from schedule import views as schedule_views
 handler404 = 'catalog.views.not_found'
 
 urlpatterns = [
+    # Main page: app selector
+    path('', catalog_views.app_selector, name='app_selector'),
+
     # Project 1 (catalog)
-    path('', catalog_views.index, name='catalog_index'),
+    path('catalog/', catalog_views.index, name='catalog_index'),
     re_path(r'^info/$', catalog_views.info, name='info'),
     re_path(r'^authors/$', catalog_views.authors, name='authors'),
     re_path(r'^coursess/$', catalog_views.courses, name='coursess'),
@@ -30,4 +33,7 @@ urlpatterns = [
     path('student_create/', schedule_views.student_create, name='student_create'),
     path('student_update/<int:student_id>/', schedule_views.student_update, name='student_update'),
     path('student_delete/<int:student_id>/', schedule_views.student_delete, name='student_delete'),
+    path('student/<int:student_id>/enroll/', schedule_views.student_enroll, name='student_enroll'),
+    path('student/<int:student_id>/unenroll/<int:course_id>/', schedule_views.student_unenroll, name='student_unenroll'),
+    path('students/<int:student_id>/courses/', schedule_views.student_courses, name='student_courses'),
 ]

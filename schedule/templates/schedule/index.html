@@ -6,16 +6,28 @@
     <title>Список преподавателей</title>
 </head>
 <body>
+    <nav>
+        <a href="{% url 'schedule_index' %}">Преподаватели</a> |
+        <a href="{% url 'courses' %}">Курсы</a> |
+        <a href="{% url 'student_index' %}">Студенты</a> |
+    </nav>
+    <hr>
+
     <h1>Преподаватели</h1>
     <ul>
         {% for teacher in teachers %}
-            <li>{{ teacher.first_name }} {{ teacher.last_name }} - {{ teacher.email }}
-                <a href="{% url 'teacher_info' teacher.id %}">Подробная информация</a>
+            <li>
+                {{ teacher.first_name }} {{ teacher.last_name }} - {{ teacher.email }}
+                <a href="{% url 'teacher_info' teacher.id %}">Инфо</a>
+                <br>
+                <a href="{% url 'teacher_update' teacher.id %}">Редактировать</a>
+                <a href="{% url 'teacher_delete' teacher.id %}">Удалить</a>
             </li>
         {% empty %}
             <li>Преподаватели не найдены</li>
         {% endfor %}
 
     </ul>
+    <a href="{% url 'teacher_create' %}">Добавить преподавателя</a>
 </body>
 </html>

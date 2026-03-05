@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponseNotFound
-from .models import Teacher, TeacherInfo, Course, Student
+from .models import Teacher, TeacherInfo, Course, Student, StudentCourse
 
 def index(request):
     teachers = Teacher.objects.all()
@@ -124,3 +124,37 @@ def student_delete(request, student_id):
     student= Student.objects.get(id=student_id)
     student.delete()
     return redirect('student_index')
+
+def student_enroll(request, student_id):
+    student = Student.objects.get(id=student_id)
+    if request.method == 'POST':
+        course_id = request.POST.get('course_id')
+        course = Course.objects.get(id=course_id)
+        
+        if not StudentCourse.objects.filter(student=student, course=course).exists():
+            StudentCourse.objects.create(student=student, course=course)
+        
+        return redirect('student_courses', student_id=student_id)
+    
+    courses = Course.objects.all()
+    return render(request, 'schedule/student_enroll.html', {'student': student, 'courses': courses})
+
+def student_unenroll(request, student_id, course_id):
+    student = Student.objects.get(id=student_id)
+    course = Course.objects.get(id=course_id)
+    
+    StudentCourse.objects.filter(student=student, course=course).delete()
+    
+    return redirect('student_courses', student_id=student_id)
+
+def student_courses(request, student_id):
+    student = Student.objects.get(id=student_id)
+    student_courses = StudentCourse.objects.filter(student=student)
+    
+    courses = [sc.course for sc in student_courses]
+    
+    return render(request, 'schedule/student_course.html', {
+        'student': student,
+        'courses': courses,
+        'student_courses': student_courses,
+    })

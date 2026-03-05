@@ -6,10 +6,11 @@
 <body>
     <h1>О проекте</h1>
     <nav>
-        <a href="/">Главная</a> |
-        <a href="/courses/">Курсы</a> |
-        <a href="/authors/">Авторы</a> |
-        <a href="/info/">О проекте</a>
+        <a href="{% url 'app_selector' %}">Выбор приложения</a> |
+        <a href="{% url 'catalog_index' %}">Главная каталога</a> |
+        <a href="{% url 'coursess' %}">Курсы</a> |
+        <a href="{% url 'authors' %}">Авторы</a> |
+        <a href="{% url 'info' %}">О проекте</a>
     </nav>
     
     <h2>Каталог курсов</h2>

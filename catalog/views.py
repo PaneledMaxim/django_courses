@@ -2,6 +2,9 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .data import courses_data, authors_data
 
+def app_selector(request):
+    return render(request, 'app_selector.html')
+
 def index(request):
     return render(request, 'index.html')
 

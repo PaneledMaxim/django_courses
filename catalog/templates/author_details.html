@@ -6,10 +6,11 @@
 <body>
     <h1>{{ author.name }}</h1>
     <nav>
-        <a href="/">Главная</a> |
-        <a href="/courses/">Курсы</a> |
-        <a href="/authors/">Авторы</a> |
-        <a href="/info/">О проекте</a>
+        <a href="{% url 'app_selector' %}">Выбор приложения</a> |
+        <a href="{% url 'catalog_index' %}">Главная каталога</a> |
+        <a href="{% url 'coursess' %}">Курсы</a> |
+        <a href="{% url 'authors' %}">Авторы</a> |
+        <a href="{% url 'info' %}">О проекте</a>
     </nav>
     
     <p><strong>Биография:</strong> {{ author.bio }}</p>
@@ -19,13 +20,13 @@
     <ul>
     {% for course in author_courses %}
         <li>
-            <a href="/course/{{ course.id }}/">{{ course.title }}</a>
+            <a href="{% url 'course_details' course.id %}">{{ course.title }}</a>
         </li>
     {% empty %}
         <li>У автора пока нет курсов</li>
     {% endfor %}
     </ul>
     
-    <a href="/authors/">← Назад к списку авторов</a>
+    <a href="{% url 'authors' %}">← Назад к списку авторов</a>
 </body>
 </html>

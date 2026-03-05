@@ -6,16 +6,17 @@
 <body>
     <h1>Все курсы</h1>
     <nav>
-        <a href="/">Главная</a> |
-        <a href="/courses/">Курсы</a> |
-        <a href="/authors/">Авторы</a> |
-        <a href="/info/">О проекте</a>
+        <a href="{% url 'app_selector' %}">Выбор приложения</a> |
+        <a href="{% url 'catalog_index' %}">Главная каталога</a> |
+        <a href="{% url 'coursess' %}">Курсы</a> |
+        <a href="{% url 'authors' %}">Авторы</a> |
+        <a href="{% url 'info' %}">О проекте</a>
     </nav>
     
     <ul>
     {% for course in courses %}
         <li>
-            <a href="/course/{{ course.id }}/">{{ course.title }}</a>
+            <a href="{% url 'course_details' course.id %}">{{ course.title }}</a>
             - {{ course.duration }}, {{ course.price }} руб.
         </li>
     {% endfor %}

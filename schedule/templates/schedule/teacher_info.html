@@ -6,7 +6,17 @@
     <title>Информация о преподавателе</title>
 </head>
 <body>
+    <nav>
+        <a href="{% url 'schedule_index' %}">Преподаватели</a> |
+        <a href="{% url 'courses' %}">Курсы</a> |
+        <a href="{% url 'student_index' %}">Студенты</a> |
+    </nav>
+    <hr>
+
     <h1>Информация о преподавателе</h1>
+    <p><strong>Преподаватель:</strong> {{ teacher.first_name }} {{ teacher.last_name }}</p>
+    <a href="{% url 'teacher_update' teacher.id %}">Редактировать преподавателя</a>
+    <br><br>
 
     {% if teacher_info %}
         <p><strong>Телефон:</strong> {{ teacher_info.phone|default:"-" }}</p>
@@ -17,5 +27,7 @@
         <p>Информация о преподавателе пока отсутствует.</p>
         <a href="{% url 'teacher_info_update' teacher.id %}">Создать информацию</a>
     {% endif %}
+    <br>
+    <a href="{% url 'schedule_index' %}">К списку преподавателей</a>
 </body>
 </html>

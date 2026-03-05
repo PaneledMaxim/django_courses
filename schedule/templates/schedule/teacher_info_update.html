@@ -6,6 +6,13 @@
     <title>Обновить информацию преподавателя</title>
 </head>
 <body>
+    <nav>
+        <a href="{% url 'schedule_index' %}">Преподаватели</a> |
+        <a href="{% url 'courses' %}">Курсы</a> |
+        <a href="{% url 'student_index' %}">Студенты</a> |
+    </nav>
+    <hr>
+
     <h1>Обновить информацию о преподавателе</h1>
     <form method="post">
         {% csrf_token %}
@@ -29,5 +36,7 @@
         
         <button type="submit">Обновить</button>
     </form>
+    <br>
+    <a href="{% url 'teacher_info' teacher_info.teacher.id %}">Назад к информации о преподавателе</a>
 </body>
 </html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Курсы студента</title>
+</head>
+<body>
+    <nav>
+        <a href="{% url 'schedule_index' %}">Преподаватели</a> |
+        <a href="{% url 'courses' %}">Курсы</a> |
+        <a href="{% url 'student_index' %}">Студенты</a> |
+    </nav>
+    <hr>
+
+    <h1>Курсы студента {{ student.first_name }} {{ student.last_name }}</h1>
+
+    <ul>
+        {% for course in courses %}
+            <li>
+                {{ course.title }} 
+                <a href="{% url 'student_unenroll' student.id course.id %}">Отписаться</a>
+            </li>
+        {% empty %}
+            <li>Студент не записан на курсы</li>
+        {% endfor %}
+    </ul>
+
+<a href="{% url 'student_enroll' student.id %}">Записать на курс</a>
+<br>
+<a href="{% url 'student_index' %}">К списку студентов</a>
+</body>
+</html>

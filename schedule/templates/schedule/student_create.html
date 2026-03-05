@@ -6,6 +6,13 @@
     <title>Создание студентов</title>
 </head>
 <body>
+    <nav>
+        <a href="{% url 'schedule_index' %}">Преподаватели</a> |
+        <a href="{% url 'courses' %}">Курсы</a> |
+        <a href="{% url 'student_index' %}">Студенты</a> |
+    </nav>
+    <hr>
+
     <h1>Добавить студента</h1>
     <form method="post">
         {% csrf_token %}
@@ -36,5 +43,7 @@
 
         <button type="submit">Сохранить</button>
     </form>
+    <br>
+    <a href="{% url 'student_index' %}">К списку студентов</a>
 </body>
 </html>
